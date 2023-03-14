@@ -18,8 +18,8 @@ const Home: NextPage = () => {
 
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
         <h1>The counter is {count}</h1>
-        <button onClick={() => dispatch(increment())} className='w-full h-10 bg-green-400/50'>Increament Value</button>
-        <button onClick={() => dispatch(decrement())} className='w-full h-10 bg-red-400/50'>Decrement Value</button>
+        <button onClick={() => dispatch(increment())} className='w-full h-10 bg-green-400/50'>Increament</button>
+        <button onClick={() => dispatch(decrement())} className='w-full h-10 bg-red-400/50'>Decrement</button>
       </main>
 
     </div>
