@@ -18,7 +18,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTab }) => {
   return (
     <div className="space-y-8 animate-fade-in">
       {/* Welcome Hero Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-teal-600 to-emerald-600 p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-teal-600 to-emerald-600 p-5 sm:p-8 text-white shadow-xl">
         <div className="absolute right-0 top-0 h-40 w-40 translate-x-10 -translate-y-10 rounded-full bg-white/10 blur-2xl"></div>
         <div className="absolute bottom-0 left-1/3 h-28 w-28 translate-y-10 rounded-full bg-emerald-400/20 blur-xl"></div>
         
@@ -26,8 +26,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTab }) => {
           <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
             Wellness Hub
           </span>
-          <h2 className="text-3xl font-extrabold md:text-4xl">Your Health, Integrated.</h2>
-          <p className="text-emerald-50 text-sm md:text-base">
+          <h2 className="text-2xl sm:text-3xl font-extrabold md:text-4xl">Your Health, Integrated.</h2>
+          <p className="text-emerald-50 text-xs sm:text-sm md:text-base">
             Book medical consultations and order tailored, nutritionist-approved grocery lists. Track everything on a single, clean dashboard.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
@@ -48,7 +48,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTab }) => {
       </div>
 
       {/* Grid of Stats & Highlights */}
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {/* Next Appointment Card */}
         <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:shadow-md">
           <div className="flex items-center justify-between pb-4">
@@ -140,7 +140,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ setActiveTab }) => {
       </div>
 
       {/* Wellness & Doctor Referral Section */}
-      <div className="rounded-3xl border border-slate-100 bg-slate-50/60 p-6 md:p-8">
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-slate-50/60 p-4 sm:p-6 md:p-8">
         <h3 className="text-lg font-bold text-slate-800">Dynamic Recommendation</h3>
         
         {nextAppointment ? (

@@ -36,7 +36,7 @@ export const CartAndBookings: React.FC = () => {
   };
 
   return (
-    <div className="grid gap-8 lg:grid-cols-3 animate-fade-in">
+    <div className="grid gap-6 sm:gap-8 lg:grid-cols-3 animate-fade-in">
       {/* Success Modal / Banner */}
       {checkoutStatus === 'success' && (
         <div className="col-span-full rounded-2xl border border-emerald-100 bg-emerald-50 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -58,9 +58,9 @@ export const CartAndBookings: React.FC = () => {
 
       {/* Shopping Cart Section (2 Cols on desktop) */}
       <div className="lg:col-span-2 space-y-6">
-        <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm">
+        <div className="bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm">
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-            <h2 className="text-xl font-black text-slate-800">Shopping Cart</h2>
+            <h2 className="text-lg sm:text-xl font-black text-slate-800">Shopping Cart</h2>
             {cartItems.length > 0 && (
               <button 
                 onClick={() => dispatch(clearCart())}
@@ -130,8 +130,8 @@ export const CartAndBookings: React.FC = () => {
         </div>
 
         {/* Medical Bookings Section */}
-        <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm">
-          <h2 className="text-xl font-black text-slate-800 border-b border-slate-100 pb-4">My Appointments</h2>
+        <div className="bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm">
+          <h2 className="text-lg sm:text-xl font-black text-slate-800 border-b border-slate-100 pb-4">My Appointments</h2>
           {appointments.length > 0 ? (
             <div className="mt-4 divide-y divide-slate-50">
               {appointments.map(apt => (
@@ -182,7 +182,7 @@ export const CartAndBookings: React.FC = () => {
       {/* Order Summary Sidebar (1 Col) */}
       {cartItems.length > 0 && (
         <div className="space-y-6">
-          <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm space-y-4">
+          <div className="bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm space-y-4">
             <h3 className="text-lg font-bold text-slate-800 border-b border-slate-100 pb-3">Checkout Details</h3>
             
             {/* Delivery/Pickup Select */}

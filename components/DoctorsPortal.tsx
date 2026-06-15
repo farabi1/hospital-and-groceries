@@ -54,7 +54,7 @@ export const DoctorsPortal: React.FC = () => {
     <div className="space-y-6 animate-fade-in relative">
       {/* Toast Alert */}
       {showSuccessToast && (
-        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-3 rounded-2xl bg-slate-900 px-6 py-4 text-white shadow-2xl animate-bounce border border-slate-700">
+        <div className="fixed bottom-20 md:bottom-5 right-3 sm:right-5 z-50 flex items-center gap-3 rounded-2xl bg-slate-900 px-5 sm:px-6 py-3.5 sm:py-4 text-white shadow-2xl animate-bounce border border-slate-700 max-w-[calc(100vw-1.5rem)]">
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal-500 text-slate-900 font-bold">✓</span>
           <div className="text-sm font-semibold">Appointment booked successfully!</div>
         </div>
@@ -103,7 +103,7 @@ export const DoctorsPortal: React.FC = () => {
       </div>
 
       {/* Doctor Cards Listing */}
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2">
         {filteredDoctors.length > 0 ? (
           filteredDoctors.map(doc => (
             <div key={doc.id} className="flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:shadow-md">
@@ -159,8 +159,8 @@ export const DoctorsPortal: React.FC = () => {
 
       {/* Booking Form Modal */}
       {bookingDoctor && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl animate-fade-in border border-slate-100">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-slate-900/60 p-0 sm:p-4 backdrop-blur-sm">
+          <div className="w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl bg-white p-5 sm:p-6 shadow-2xl animate-fade-in border border-slate-100 max-h-[90dvh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <h3 className="text-lg font-bold text-slate-800">Confirm Booking</h3>
               <button 

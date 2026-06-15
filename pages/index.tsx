@@ -25,22 +25,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <style jsx global>{`
-        body {
-          font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(8px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-          animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-      `}</style>
-
       {/* Main Header navigation */}
       <header className="sticky top-0 z-40 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl h-16 items-center justify-between px-4 sm:px-6">
+        <div className="mx-auto flex max-w-6xl h-14 sm:h-16 items-center justify-between px-4 sm:px-6">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => setActiveTab('dashboard')}>
             <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-tr from-teal-500 to-emerald-500 text-white font-extrabold text-lg shadow-sm">
@@ -123,7 +110,7 @@ const Home: NextPage = () => {
       </header>
 
       {/* Main Container */}
-      <main className="mx-auto max-w-6xl px-4 sm:px-6 py-8 md:py-10">
+      <main className="mx-auto max-w-6xl px-3 sm:px-6 py-6 sm:py-8 md:py-10">
         {activeTab === 'dashboard' && <Dashboard setActiveTab={setActiveTab} />}
         {activeTab === 'doctors' && <DoctorsPortal />}
         {activeTab === 'groceries' && <GroceryShop />}
@@ -131,39 +118,39 @@ const Home: NextPage = () => {
       </main>
 
       {/* Mobile Sticky Navigation Footer */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-slate-100 flex justify-around py-2 shadow-lg">
+      <nav className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-md border-t border-slate-100 flex justify-around py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
         <button 
           onClick={() => setActiveTab('dashboard')} 
-          className={`flex flex-col items-center gap-1 text-[10px] font-bold ${activeTab === 'dashboard' ? 'text-teal-600' : 'text-slate-400'}`}
+          className={`flex flex-col items-center justify-center gap-0.5 text-[10px] font-bold min-w-[60px] py-1 rounded-xl transition-colors ${activeTab === 'dashboard' ? 'text-teal-600' : 'text-slate-400'}`}
         >
-          <span>🏠</span>
+          <span className="text-lg">🏠</span>
           <span>Overview</span>
         </button>
         <button 
           onClick={() => setActiveTab('doctors')} 
-          className={`flex flex-col items-center gap-1 text-[10px] font-bold ${activeTab === 'doctors' ? 'text-teal-600' : 'text-slate-400'}`}
+          className={`flex flex-col items-center justify-center gap-0.5 text-[10px] font-bold min-w-[60px] py-1 rounded-xl transition-colors ${activeTab === 'doctors' ? 'text-teal-600' : 'text-slate-400'}`}
         >
-          <span>🏥</span>
+          <span className="text-lg">🏥</span>
           <span>Doctors</span>
         </button>
         <button 
           onClick={() => setActiveTab('groceries')} 
-          className={`flex flex-col items-center gap-1 text-[10px] font-bold ${activeTab === 'groceries' ? 'text-teal-600' : 'text-slate-400'}`}
+          className={`flex flex-col items-center justify-center gap-0.5 text-[10px] font-bold min-w-[60px] py-1 rounded-xl transition-colors ${activeTab === 'groceries' ? 'text-teal-600' : 'text-slate-400'}`}
         >
-          <span>🛒</span>
+          <span className="text-lg">🛒</span>
           <span>Groceries</span>
         </button>
         <button 
           onClick={() => setActiveTab('cart')} 
-          className={`flex flex-col items-center gap-1 text-[10px] font-bold ${activeTab === 'cart' ? 'text-teal-600' : 'text-slate-400'}`}
+          className={`flex flex-col items-center justify-center gap-0.5 text-[10px] font-bold min-w-[60px] py-1 rounded-xl transition-colors ${activeTab === 'cart' ? 'text-teal-600' : 'text-slate-400'}`}
         >
-          <span>📦</span>
+          <span className="text-lg">📦</span>
           <span>Summary</span>
         </button>
       </nav>
 
       {/* Footer */}
-      <footer className="mt-20 border-t border-slate-100 bg-white py-8 text-center text-xs text-slate-400 pb-20 md:pb-8">
+      <footer className="mt-12 sm:mt-20 border-t border-slate-100 bg-white py-6 sm:py-8 text-center text-xs text-slate-400 pb-24 md:pb-8">
         <div className="mx-auto max-w-6xl px-4">
           <p>© 2026 MedGrocer wellness solutions. All rights reserved.</p>
           <p className="mt-1 text-[10px] text-slate-300">Empowering healthy lifestyles and medical consult management in one click.</p>

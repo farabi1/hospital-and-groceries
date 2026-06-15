@@ -62,8 +62,8 @@ export const GroceryShop: React.FC = () => {
 
       {/* Medical Recommendations Banner */}
       {activeBookings.length > 0 && (
-        <div className="rounded-2xl border border-indigo-100 bg-indigo-50/60 p-5 space-y-3">
-          <div className="flex items-center gap-2 text-indigo-800 font-bold text-sm">
+      <div className="rounded-2xl border border-indigo-100 bg-indigo-50/60 p-4 sm:p-5 space-y-3">
+          <div className="flex items-center gap-2 text-indigo-800 font-bold text-xs sm:text-sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -173,13 +173,13 @@ export const GroceryShop: React.FC = () => {
       </div>
 
       {/* Grocery Items Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {filteredGroceries.length > 0 ? (
           filteredGroceries.map(item => (
             <div key={item.id} className="flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition hover:shadow-md">
               <div className="space-y-3">
                 {/* Image placeholder / badge */}
-                <div className="flex h-36 w-full items-center justify-center rounded-xl bg-slate-50 border border-slate-100 relative overflow-hidden">
+                <div className="flex h-28 sm:h-36 w-full items-center justify-center rounded-xl bg-slate-50 border border-slate-100 relative overflow-hidden">
                   <div className="absolute top-2 left-2 rounded-lg border px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wide bg-white/95 shadow-sm">
                     {item.category}
                   </div>
