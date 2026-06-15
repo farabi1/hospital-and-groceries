@@ -22,10 +22,6 @@ const Home: NextPage = () => {
         <title>MedGrocer | Integrated Wellness</title>
         <meta name="description" content="Book doctor checkups and shop tailored healthy groceries in one wellness hub." />
         <link rel="icon" href="/favicon.ico" />
-        {/* Google Fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </Head>
 
       <style jsx global>{`
