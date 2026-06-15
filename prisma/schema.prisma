@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+model Doctor {
+  id             String   @id @default(uuid())
+  name           String
+  specialty      String
+  department     String
+  experience     Int
+  rating         Float
+  fee            Float
+  bio            String
+  availableSlots String[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model InventoryItem {
+  id            String   @id @default(uuid())
+  name          String
+  category      String
+  price         Float
+  rating        Float
+  healthTag     String
+  description   String
+  calorieInfo   String
+  healthBenefit String
+  stock         Int
+  available     Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Order {
+  id             String      @id @default(uuid())
+  items          OrderItem[]
+  subtotal       Float
+  tax            Float
+  deliveryFee    Float
+  total          Float
+  deliveryMethod String
+  status         String
+  customerName   String
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model OrderItem {
+  id          String @id @default(uuid())
+  orderId     String
+  productId   String
+  productName String
+  category    String
+  price       Float
+  quantity    Int
+  order       Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model Appointment {
+  id          String   @id @default(uuid())
+  doctorId    String
+  doctorName  String
+  department  String
+  date        String
+  timeSlot    String
+  notes       String?
+  status      String   @default("booked")
+  patientName String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AdminSettings {
+  id               String   @id @default(uuid())
+  storeName        String
+  storeDescription String
+  taxRate          Float
+  deliveryFee      Float
+  operatingHours   String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}

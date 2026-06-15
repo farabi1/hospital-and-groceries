@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAppointments, cancelAppointment, completeAppointment, Appointment } from '../../slices/appointmentSlice';
+import { selectAppointments, updateAppointmentStatusAsync, Appointment } from '../../slices/appointmentSlice';
 
 type Filter = 'all' | 'booked' | 'completed' | 'cancelled';
 
@@ -118,13 +118,13 @@ export const AdminAppointments: React.FC = () => {
                       {apt.status === 'booked' && (
                         <>
                           <button
-                            onClick={() => dispatch(completeAppointment(apt.id))}
+                            onClick={() => dispatch(updateAppointmentStatusAsync({ id: apt.id, status: 'completed' }) as any)}
                             className="rounded-lg bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1.5 text-[10px] font-bold text-emerald-700 transition"
                           >
                             Complete
                           </button>
                           <button
-                            onClick={() => dispatch(cancelAppointment(apt.id))}
+                            onClick={() => dispatch(updateAppointmentStatusAsync({ id: apt.id, status: 'cancelled' }) as any)}
                             className="rounded-lg bg-red-50 hover:bg-red-100 border border-red-200 px-2.5 py-1.5 text-[10px] font-bold text-red-600 transition"
                           >
                             Cancel

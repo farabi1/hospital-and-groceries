@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectOrders, updateOrderStatus, Order } from '../../slices/adminSlice';
+import { selectOrders, updateOrderStatusAsync, Order } from '../../slices/adminSlice';
 
 const STATUS_OPTIONS: Order['status'][] = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
 
@@ -107,7 +107,7 @@ export const AdminOrders: React.FC = () => {
                       </button>
                       <select
                         value={order.status}
-                        onChange={e => dispatch(updateOrderStatus({ id: order.id, status: e.target.value as Order['status'] }))}
+                        onChange={e => dispatch(updateOrderStatusAsync({ id: order.id, status: e.target.value as Order['status'] }) as any)}
                         className="rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-[10px] font-bold text-slate-700 focus:border-indigo-500 focus:outline-none"
                       >
                         {STATUS_OPTIONS.map(s => (
@@ -160,7 +160,7 @@ export const AdminOrders: React.FC = () => {
               </div>
               <select
                 value={selectedOrder.status}
-                onChange={e => { dispatch(updateOrderStatus({ id: selectedOrder.id, status: e.target.value as Order['status'] })); setSelectedOrder(null); }}
+                onChange={e => { dispatch(updateOrderStatusAsync({ id: selectedOrder.id, status: e.target.value as Order['status'] }) as any); setSelectedOrder(null); }}
                 className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-bold text-slate-700 focus:border-indigo-500 focus:outline-none"
               >
                 {STATUS_OPTIONS.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}

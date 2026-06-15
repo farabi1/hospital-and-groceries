@@ -10,8 +10,8 @@ import {
   selectCheckoutStatus,
   resetCheckout
 } from '../slices/cartSlice';
-import { selectAppointments, cancelAppointment } from '../slices/appointmentSlice';
-import { createOrder } from '../slices/adminSlice';
+import { selectAppointments, updateAppointmentStatusAsync } from '../slices/appointmentSlice';
+import { createOrderAsync } from '../slices/adminSlice';
 
 export const CartAndBookings: React.FC = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export const CartAndBookings: React.FC = () => {
   const finalTotal = cartTotal > 0 ? cartTotal + taxAmount + deliveryFee : 0;
 
   const handleCheckout = () => {
-    dispatch(createOrder({
+    dispatch(createOrderAsync({
       items: cartItems.map(item => ({
         productId: item.product.id,
         productName: item.product.name,
@@ -40,14 +40,15 @@ export const CartAndBookings: React.FC = () => {
       deliveryFee,
       total: finalTotal,
       deliveryMethod,
+      status: 'pending',
       customerName: 'Guest User'
-    }));
+    }) as any);
     dispatch(checkout());
   };
 
   const handleCancelAppointment = (id: string) => {
     if (confirm('Are you sure you want to cancel this appointment?')) {
-      dispatch(cancelAppointment(id));
+      dispatch(updateAppointmentStatusAsync({ id, status: 'cancelled' }) as any);
     }
   };
 

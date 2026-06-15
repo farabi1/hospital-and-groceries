@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectDoctors, addDoctor, updateDoctor, removeDoctor, Doctor } from '../../slices/doctorSlice';
+import { selectDoctors, createDoctor, updateDoctorAsync, deleteDoctor, Doctor } from '../../slices/doctorSlice';
 
 export const AdminDoctors: React.FC = () => {
   const dispatch = useDispatch();
@@ -38,16 +38,16 @@ export const AdminDoctors: React.FC = () => {
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     if (editingId) {
-      dispatch(updateDoctor({ ...formData, id: editingId }));
+      dispatch(updateDoctorAsync({ ...formData, id: editingId }) as any);
     } else {
-      dispatch(addDoctor(formData));
+      dispatch(createDoctor(formData) as any);
     }
     setIsModalOpen(false);
   };
 
   const handleDelete = (id: string) => {
     if (confirm('Are you sure you want to delete this doctor?')) {
-      dispatch(removeDoctor(id));
+      dispatch(deleteDoctor(id) as any);
     }
   };
 

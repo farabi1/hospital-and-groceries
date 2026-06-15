@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAdminSettings, updateSettings } from '../../slices/adminSlice';
+import { selectAdminSettings, updateSettingsAsync } from '../../slices/adminSlice';
 
 export const AdminSettings: React.FC = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ export const AdminSettings: React.FC = () => {
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(updateSettings(formData));
+    dispatch(updateSettingsAsync(formData) as any);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };

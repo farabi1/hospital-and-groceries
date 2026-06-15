@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDoctors, Doctor } from '../slices/doctorSlice';
-import { bookAppointment } from '../slices/appointmentSlice';
+import { bookAppointmentAsync } from '../slices/appointmentSlice';
 
 export const DoctorsPortal: React.FC = () => {
   const dispatch = useDispatch();
@@ -38,14 +38,15 @@ export const DoctorsPortal: React.FC = () => {
     e.preventDefault();
     if (!bookingDoctor || !selectedSlot || !bookingDate) return;
 
-    dispatch(bookAppointment({
+    dispatch(bookAppointmentAsync({
       doctorId: bookingDoctor.id,
       doctorName: bookingDoctor.name,
       department: bookingDoctor.department,
       date: bookingDate,
       timeSlot: selectedSlot,
-      notes: bookingNotes
-    }));
+      notes: bookingNotes.trim(),
+      patientName: 'Guest User'
+    }) as any);
 
     setBookingDoctor(null);
     setShowSuccessToast(true);

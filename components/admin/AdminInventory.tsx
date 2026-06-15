@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectInventory, addProduct, updateProduct, removeProduct, toggleAvailability, InventoryItem } from '../../slices/inventorySlice';
+import { selectInventory, createProduct, updateProductAsync, deleteProduct, toggleAvailabilityAsync, InventoryItem } from '../../slices/inventorySlice';
 
 export const AdminInventory: React.FC = () => {
   const dispatch = useDispatch();
@@ -40,16 +40,16 @@ export const AdminInventory: React.FC = () => {
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     if (editingId) {
-      dispatch(updateProduct({ ...formData, id: editingId }));
+      dispatch(updateProductAsync({ ...formData, id: editingId }) as any);
     } else {
-      dispatch(addProduct(formData));
+      dispatch(createProduct(formData) as any);
     }
     setIsModalOpen(false);
   };
 
   const handleDelete = (id: string) => {
     if (confirm('Are you sure you want to delete this product?')) {
-      dispatch(removeProduct(id));
+      dispatch(deleteProduct(id) as any);
     }
   };
 
@@ -102,7 +102,7 @@ export const AdminInventory: React.FC = () => {
                     </span>
                   </td>
                   <td className="px-4 py-3 hidden md:table-cell">
-                    <button onClick={() => dispatch(toggleAvailability(item.id))} className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${item.available ? 'bg-indigo-600' : 'bg-slate-200'}`}>
+                    <button onClick={() => dispatch(toggleAvailabilityAsync(item.id) as any)} className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${item.available ? 'bg-indigo-600' : 'bg-slate-200'}`}>
                       <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${item.available ? 'translate-x-5' : 'translate-x-1'}`} />
                     </button>
                   </td>
