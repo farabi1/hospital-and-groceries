@@ -11,6 +11,7 @@ import {
   resetCheckout
 } from '../slices/cartSlice';
 import { selectAppointments, cancelAppointment } from '../slices/appointmentSlice';
+import { createOrder } from '../slices/adminSlice';
 
 export const CartAndBookings: React.FC = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,21 @@ export const CartAndBookings: React.FC = () => {
   const finalTotal = cartTotal > 0 ? cartTotal + taxAmount + deliveryFee : 0;
 
   const handleCheckout = () => {
+    dispatch(createOrder({
+      items: cartItems.map(item => ({
+        productId: item.product.id,
+        productName: item.product.name,
+        category: item.product.category,
+        price: item.product.price,
+        quantity: item.quantity
+      })),
+      subtotal: cartTotal,
+      tax: taxAmount,
+      deliveryFee,
+      total: finalTotal,
+      deliveryMethod,
+      customerName: 'Guest User'
+    }));
     dispatch(checkout());
   };
 

@@ -151,9 +151,14 @@ const Home: NextPage = () => {
 
       {/* Footer */}
       <footer className="mt-12 sm:mt-20 border-t border-slate-100 bg-white py-6 sm:py-8 text-center text-xs text-slate-400 pb-24 md:pb-8">
-        <div className="mx-auto max-w-6xl px-4">
-          <p>© 2026 MedGrocer wellness solutions. All rights reserved.</p>
-          <p className="mt-1 text-[10px] text-slate-300">Empowering healthy lifestyles and medical consult management in one click.</p>
+        <div className="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-left">
+            <p>© 2026 MedGrocer wellness solutions. All rights reserved.</p>
+            <p className="mt-1 text-[10px] text-slate-300">Empowering healthy lifestyles and medical consult management in one click.</p>
+          </div>
+          <div>
+            <a href="/admin" className="text-[10px] font-bold text-slate-300 hover:text-indigo-600 transition">Admin Login</a>
+          </div>
         </div>
       </footer>
     </div>

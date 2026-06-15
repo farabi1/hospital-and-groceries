@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { groceries, GroceryItem } from '../data/groceries';
+import { selectAvailableInventory, InventoryItem } from '../slices/inventorySlice';
 import { addToCart } from '../slices/cartSlice';
 import { selectAppointments } from '../slices/appointmentSlice';
 
 export const GroceryShop: React.FC = () => {
   const dispatch = useDispatch();
   const appointments = useSelector(selectAppointments);
+  const groceries = useSelector(selectAvailableInventory);
   
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -35,7 +36,7 @@ export const GroceryShop: React.FC = () => {
     return matchesSearch && matchesCategory && matchesHealthTag;
   });
 
-  const handleAddToCart = (item: GroceryItem) => {
+  const handleAddToCart = (item: InventoryItem) => {
     dispatch(addToCart(item));
     setShowAddedAlert(item.id);
     setTimeout(() => setShowAddedAlert(null), 1500);

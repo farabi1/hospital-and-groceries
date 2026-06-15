@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store'
-import { GroceryItem } from '../data/groceries'
+import { InventoryItem } from './inventorySlice'
 
 export interface CartItem {
-  product: GroceryItem;
+  product: InventoryItem;
   quantity: number;
 }
 
@@ -22,7 +22,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<GroceryItem>) => {
+    addToCart: (state, action: PayloadAction<InventoryItem>) => {
       const existingItem = state.items.find(item => item.product.id === action.payload.id);
       if (existingItem) {
         existingItem.quantity += 1;

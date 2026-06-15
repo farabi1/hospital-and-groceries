@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { doctors, Doctor } from '../data/doctors';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectDoctors, Doctor } from '../slices/doctorSlice';
 import { bookAppointment } from '../slices/appointmentSlice';
 
 export const DoctorsPortal: React.FC = () => {
   const dispatch = useDispatch();
+  const doctors = useSelector(selectDoctors);
+  
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDept, setSelectedDept] = useState<string>('All');
   const [bookingDoctor, setBookingDoctor] = useState<Doctor | null>(null);
