@@ -21,6 +21,7 @@ const Home: NextPage = () => {
       <Head>
         <title>MedGrocer | Integrated Wellness</title>
         <meta name="description" content="Book doctor checkups and shop tailored healthy groceries in one wellness hub." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
