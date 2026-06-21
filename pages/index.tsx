@@ -8,6 +8,8 @@ import { GroceryShop } from '../components/GroceryShop'
 import { CartAndBookings } from '../components/CartAndBookings'
 import { selectCartCount } from '../slices/cartSlice'
 import { selectActiveAppointmentsCount } from '../slices/appointmentSlice'
+import { useSession, signOut } from 'next-auth/react'
+import Link from 'next/link'
 
 type Tab = 'dashboard' | 'doctors' | 'groceries' | 'cart';
 
@@ -15,6 +17,7 @@ const Home: NextPage = () => {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const cartCount = useSelector(selectCartCount);
   const activeBookingsCount = useSelector(selectActiveAppointmentsCount);
+  const { data: session } = useSession();
 
   return (
     <div className="min-h-screen bg-slate-50/50 text-slate-800 antialiased font-sans">
@@ -90,6 +93,18 @@ const Home: NextPage = () => {
                 </span>
               )}
             </button>
+            <div className="h-6 w-px bg-slate-200 mx-2"></div>
+            {session ? (
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-semibold text-slate-600">Hi, {session.user?.name || 'User'}</span>
+                <button onClick={() => signOut()} className="text-xs font-bold text-slate-400 hover:text-slate-600">Sign out</button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Link href="/login" className="text-xs font-bold text-emerald-600 hover:text-emerald-700 transition">Sign in</Link>
+                <Link href="/register" className="text-xs font-bold bg-slate-800 text-white px-3 py-1.5 rounded-lg hover:bg-slate-900 transition">Register</Link>
+              </div>
+            )}
           </nav>
 
           {/* Mobile Cart Shortcut */}
